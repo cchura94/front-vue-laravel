@@ -3,7 +3,7 @@ import axios from 'axios'
 const urlBaseMeta = "http://127.0.0.1:8000/api";
 
 export function Api() {
-    let token = "";
+    let token = localStorage.getItem("access_token");
 
     const api = axios.create({
         baseURL: urlBaseMeta,
