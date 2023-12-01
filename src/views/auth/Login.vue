@@ -4,9 +4,11 @@
     <br>
     <label for="c">Ingrese su Correo: </label>
     <input type="email" id="c" v-model="credenciales.email">
+    {{ errors.email }}
     <br>
     <label for="p">Ingrese su Contraseña: </label>
     <input type="password" id="p" v-model="credenciales.password">
+    {{ errors.password }}
     <br>
     <button type="button" @click="funIngresar()">Ingresar</button>
 </template>
@@ -18,6 +20,7 @@
     import { useRouter } from "vue-router"
 
     const credenciales = ref({email: "", password: ""})
+    const errors = ref({})
 
     const router = useRouter()
 
@@ -30,7 +33,12 @@
             router.push("/usuario");
 
         } catch (error) {
-            console.log(error.response.data.errors)
+            if(error.response.status == 422){
+                console.log(error.response.data.errors)
+                errors.value = error.response.data.errors
+            }else{
+                alert("Credenciales Incorrectas")
+            }
         }
 
         /*

@@ -8,7 +8,15 @@
         <RouterLink to="/about">NOSOTROS</RouterLink> |
         
         <RouterLink to="/login">INGRESAR</RouterLink>
+        <button @click="funSalir()">Salir</button>
       </nav>
    
   <RouterView />
 </template>
+
+<script setup>
+  const funSalir = () =>  {
+    localStorage.removeItem("access_token");
+    window.location.href = "/login"
+  }
+</script>
