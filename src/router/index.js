@@ -4,6 +4,9 @@ import Chat from '../views/Chat.vue'
 import Usuario from '../views/admin/Usuario.vue'
 import Login from '../views/auth/Login.vue'
 import Categoria from '../views/admin/productos/Categoria.vue'
+import NotFound from "./../views/errors/NotFound.vue"
+
+import AppLayout from "@/layout/AppLayout.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,12 +29,7 @@ const router = createRouter({
       name: 'Chat',
       component: Chat
     },
-    {
-      path: '/usuario',
-      name: 'Usuario',
-      component: Usuario,
-      meta: {requireAuth: true}
-    },
+    
     {
       path: '/login',
       name: 'Login',
@@ -39,10 +37,27 @@ const router = createRouter({
       meta: {redirectIfAuth: true}
     },
     {
-      path: '/admin/categoria',
-      name: 'Categoria',
-      component: Categoria,
-      meta: {requireAuth: true}
+      path: '/admin',
+      component: AppLayout,
+      children: [
+        {
+          path: 'categoria',
+          name: 'Categoria',
+          component: Categoria,
+          meta: {requireAuth: true}
+        },
+        {
+          path: 'usuario',
+          name: 'Usuario',
+          component: Usuario,
+          meta: {requireAuth: true}
+        },
+
+      ]
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      component: NotFound
     }
   ]
 })
