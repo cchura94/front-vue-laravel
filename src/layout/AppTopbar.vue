@@ -58,6 +58,11 @@ const isOutsideClicked = (event) => {
 
     return !(sidebarEl.isSameNode(event.target) || sidebarEl.contains(event.target) || topbarEl.isSameNode(event.target) || topbarEl.contains(event.target));
 };
+
+const onSalir = () => {
+    localStorage.removeItem("access_token")
+    router.push({name: 'Login'})
+}
 </script>
 
 <template>
@@ -82,11 +87,11 @@ const isOutsideClicked = (event) => {
             </button>
             <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
                 <i class="pi pi-user"></i>
-                <span>Profile</span>
+                <span>Perfil</span>
             </button>
-            <button @click="onSettingsClick()" class="p-link layout-topbar-button">
-                <i class="pi pi-cog"></i>
-                <span>Settings</span>
+            <button @click="onSalir()" class="p-link layout-topbar-button">
+                <i class="pi pi-power-off"></i>
+                <span>Salir</span>
             </button>
         </div>
     </div>

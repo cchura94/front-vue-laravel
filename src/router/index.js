@@ -5,6 +5,7 @@ import Usuario from '../views/admin/Usuario.vue'
 import Login from '../views/auth/Login.vue'
 import Categoria from '../views/admin/productos/Categoria.vue'
 import NotFound from "./../views/errors/NotFound.vue"
+import Producto from "./../views/admin/productos/Producto.vue"
 
 import AppLayout from "@/layout/AppLayout.vue"
 
@@ -50,6 +51,12 @@ const router = createRouter({
           path: 'usuario',
           name: 'Usuario',
           component: Usuario,
+          meta: {requireAuth: true}
+        },
+        {
+          path: 'producto',
+          name: 'Producto',
+          component: Producto,
           meta: {requireAuth: true}
         },
 
