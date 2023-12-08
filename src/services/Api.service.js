@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const urlBaseMeta = "http://127.0.0.1:8000/api";
+// const urlBaseMeta = "https://laravelvue.blumbit.net/back/public/api"
 
 export function Api() {
     let token = localStorage.getItem("access_token");
