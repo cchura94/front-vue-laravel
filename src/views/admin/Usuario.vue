@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <h1>Lista Usuarios</h1>
 
     <label for="">Nombre:</label>
@@ -34,6 +34,14 @@
         </tr>
       </tbody>
     </table>
+
+    <DataTable :value="usuarios" tableStyle="min-width: 50rem">
+      <Column field="id" header="ID"></Column>
+      <Column field="name" header="NOMBRE"></Column>
+      <Column field="email" header="COrreo Electronico"></Column>
+      <Column field="created_at" header="Registrado en"></Column>
+  </DataTable>
+
   </div>
 </template>
 <script setup>

@@ -15,5 +15,8 @@ export default {
     },
     destroy(id){
         return Api().delete(`/producto/${id}`);
+    },
+    actualizarImagen(id, formData){
+        return Api().post(`/producto/${id}/actualizar-imagen`, formData);
     }
 }
