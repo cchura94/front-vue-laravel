@@ -11,7 +11,7 @@
           icon="pi pi-plus"
           severity="success"
           class="mr-2"
-          @click="abrirNuevoProducto"
+          @click="abrirNuevoProducto(true)"
         />
         <Button label="Elimninar" icon="pi pi-trash" severity="danger" />
       </template>
@@ -305,7 +305,11 @@ const onPage = (event) => {
   getProductos();
 };
 
-const abrirNuevoProducto = () => {
+const abrirNuevoProducto = (nuevo = false) => {
+  if(nuevo){
+    submitted.value = false;
+    producto.value = { estado: true };
+  }
   productDialog.value = true;
 };
 const hideDialog = () => {
